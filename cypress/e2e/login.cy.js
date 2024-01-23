@@ -9,15 +9,7 @@ describe('Login', function () {
       is_provider: true,
     }
     before(function () {
-      cy.task('removeUser', user.email).then(function (result) {
-        console.log(result)
-      })
-      // Cadastra via API para garantir a massa de teste
-      cy.request('POST', 'http://localhost:3333/users', user).then(function (
-        response
-      ) {
-        expect(response.status).to.eq(200)
-      })
+      cy.postUser(user)
     })
     it('Deve logar com sucesso', function () {
       loginPage.go()

@@ -42,4 +42,29 @@ describe('Login', function () {
       loginPage.toast.shouldHaveText(message)
     })
   })
+  context.only('Quando o formato do email é inválido', function () {
+    const emails = [
+      'lucas.com.br',
+      'yahoo.com',
+      '@gmail.com',
+      '@',
+      'lucas@',
+      '111',
+      '&*^&&^*',
+      'xpto123',
+    ]
+
+    emails.forEach(function (email) {
+      it('Não deve logar com o email: ' + email, function () {
+        const user = {
+          email: email,
+          password: 'pwd123',
+        }
+        loginPage.go()
+        loginPage.form(user)
+        loginPage.submit()
+        loginPage.alertHaveText('Informe um email válido')
+      })
+    })
+  })
 })

@@ -1,0 +1,26 @@
+{
+  "success": {
+    "name": "Lucas Rezende",
+    "email": "lucastestes@samurai.com",
+    "password": "pwd123"
+  },
+  "email_dup": {
+    "name": "João Lucas",
+    "email": "joao@samurai.com",
+    "password": "pwd123",
+    "is_provider": true
+  },
+  "email_inv": {
+    "name":"Maria das Dores",
+    "email":"maria.yahoo.com",
+    "password":"pwd123",
+    "is_provider":true
+  },
+  "short_password":{
+    "name": "João P",
+    "email": "joao@gmail.com",
+    "password": null
+  }
+
+}
+

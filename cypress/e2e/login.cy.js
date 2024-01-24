@@ -42,7 +42,7 @@ describe('Login', function () {
       loginPage.toast.shouldHaveText(message)
     })
   })
-  context.only('Quando o formato do email é inválido', function () {
+  context('Quando o formato do email é inválido', function () {
     const emails = [
       'lucas.com.br',
       'yahoo.com',
@@ -63,7 +63,19 @@ describe('Login', function () {
         loginPage.go()
         loginPage.form(user)
         loginPage.submit()
-        loginPage.alertHaveText('Informe um email válido')
+        loginPage.alert.haveText('Informe um email válido')
+      })
+    })
+  })
+  context('Quando não preencho nenhum dos campos', function () {
+    const alertMessages = ['E-mail é obrigatório', 'Senha é obrigatória']
+    beforeEach(function () {
+      loginPage.go()
+      loginPage.submit()
+    })
+    alertMessages.forEach(function (alert) {
+      it('Deve exibir ' + alert.toLowerCase(), function () {
+        loginPage.alert.haveText(alert)
       })
     })
   })

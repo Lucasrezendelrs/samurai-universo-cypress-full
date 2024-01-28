@@ -24,22 +24,36 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import moment from 'moment'
+import loginPage from './pages/login'
+import dashPage from './pages/dash'
+
+// App Actions
+Cypress.Commands.add('uiLogin', function (user) {
+  loginPage.go()
+  loginPage.form(user)
+  loginPage.submit()
+  dashPage.header.userLoggedIn(user.name)
+})
 
 Cypress.Commands.add('postUser', function (user) {
   cy.task('removeUser', user.email).then(function (result) {
     console.log(result)
   })
   // Cadastra via API para garantir a massa de teste
-  cy.request('POST', 'http://localhost:3333/users', user).then(function (
-    response
-  ) {
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:3333/users',
+    body: user,
+  }).then(function (response) {
     expect(response.status).to.eq(200)
   })
 })
 
 Cypress.Commands.add('recoveryPass', function (email) {
-  cy.request('POST', 'http://localhost:3333/password/forgot', {
-    email: email,
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:3333/password/forgot',
+    body: { email: email },
   }).then(function (response) {
     expect(response.status).to.eq(204)
 
@@ -67,7 +81,9 @@ Cypress.Commands.add('createAppointment', function (hour) {
 
   cy.log(now.getDate())
 
-  const date = moment(now).format('YYYY-MM-DD ' + hour + ':00')
+  //const date_old = moment(now).format('YYYY-MM-DD ' + hour + ':00')
+
+  const date = moment(now).format(`YYYY-MM-DD ${hour}:00`)
 
   const payload = {
     provider_id: Cypress.env('providerId'),

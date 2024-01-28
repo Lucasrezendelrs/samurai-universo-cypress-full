@@ -5,6 +5,7 @@ module.exports = defineConfig({
   projectId: 'y1na7j',
   e2e: {
     baseUrl: 'http://localhost:3000',
+    apiServer: 'http://localhost:3333',
     viewportWidth: 1440,
     viewportHeight: 900,
     setupNodeEvents(on, config) {

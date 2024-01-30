@@ -4,6 +4,7 @@ const { Pool } = require('pg')
 module.exports = defineConfig({
   projectId: 'y1na7j',
   e2e: {
+    video: true,
     baseUrl: 'http://localhost:3000',
     apiServer: 'http://localhost:3333',
     viewportWidth: 1440,

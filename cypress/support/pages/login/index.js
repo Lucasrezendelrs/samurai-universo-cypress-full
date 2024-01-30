@@ -9,6 +9,7 @@ class LoginPage {
   }
   go() {
     cy.visit('/')
+    cy.contains(el.title).should('be.visible')
   }
   form(user) {
     cy.get(el.email).type(user.email)

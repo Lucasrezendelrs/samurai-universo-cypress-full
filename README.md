@@ -17,7 +17,7 @@ Cypress é um framework Node.js, confiável e fácil de usar para testar aplica�
 ## 🚀 Tecnologias
 
 <p  align="center">
-<img src="https://img.shields.io/badge/Node.js-000000?style=for-the-badge&logo=node.js/>
+<img src="https://img.shields.io/badge/Node.js-000000?style=for-the-badge&logo=node.js"/>
 
 <img  src="https://img.shields.io/badge/javascript-000000?style=for-the-badge&logo=javascript"/>
 
@@ -26,6 +26,7 @@ Cypress é um framework Node.js, confiável e fácil de usar para testar aplica�
 <img  src="https://img.shields.io/badge/actions-000000?style=for-the-badge&logo=github-actions"/>
 
 </p>
+
 ## 👨🏻‍💻 Como executar o projeto
 
 [Node.js](https://nodejs.org/) v16 ou superior para executar.

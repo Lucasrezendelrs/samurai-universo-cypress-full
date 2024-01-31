@@ -9,6 +9,7 @@ module.exports = defineConfig({
     apiServer: 'http://localhost:3333',
     viewportWidth: 1440,
     viewportHeight: 900,
+    defaultCommandTimeout: 30000,
     setupNodeEvents(on, config) {
       // implement node event listeners here
 

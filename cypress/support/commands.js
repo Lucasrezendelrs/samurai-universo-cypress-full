@@ -77,7 +77,8 @@ Cypress.Commands.add('createAppointment', function (hour) {
     // Se for domingo, avança mais um dia para chegar à segunda-feira
     now.setDate(now.getDate() + 1)
   }
-  Cypress.env('appointmentDay', now.getDate())
+
+  Cypress.env('appointmentDate', now)
 
   cy.log(now.getDate())
 
@@ -122,7 +123,7 @@ Cypress.Commands.add('setProviderId', function (providerEmail) {
   })
 })
 
-Cypress.Commands.add('apiLogin', function (user) {
+Cypress.Commands.add('apiLogin', function (user, setLocalStorage = false) {
   const payload = {
     email: user.email,
     password: user.password,
@@ -134,5 +135,14 @@ Cypress.Commands.add('apiLogin', function (user) {
   }).then(function (response) {
     expect(response.status).to.eq(200)
     Cypress.env('apiToken', response.body.token)
+
+    if (setLocalStorage) {
+      const { token, user } = response.body
+
+      window.localStorage.setItem('@Samurai:token', token)
+
+      window.localStorage.setItem('@Samurai:user', JSON.stringify(user))
+    }
   })
+  if (setLocalStorage) cy.visit('/dashboard')
 })

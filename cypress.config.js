@@ -2,7 +2,7 @@ const { defineConfig } = require('cypress')
 const { Pool } = require('pg')
 
 module.exports = defineConfig({
-  projectId: 'y1na7j',
+  projectId: 'ewoiqw',
   e2e: {
     video: true,
     baseUrl: 'http://localhost:3000',

@@ -45,9 +45,6 @@ yarn install
 npx cypress run
 ```
 
-## 🔧 Github Actions
-
-Os testes foram colocados para rodar no github actions. A execução é feita manualmente, e você pode vê-las clicando em "Actions" no menu superior selecionando o workflow Chrome UI Tests.
 
 ## 📝 Cenários Automatizados :white_check_mark:
 
